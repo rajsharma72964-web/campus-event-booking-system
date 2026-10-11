@@ -1,0 +1,29 @@
+# Render Infrastructure as Code (Blueprint)
+# https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: campus-event-backend
+    runtime: node
+    plan: starter # Render Persistent Disks require Starter plan ($7/mo). For free tier, remove the disk section.
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install && npm run build
+    startCommand: npm start
+    disk:
+      name: sqlite-data
+      mountPath: /var/data
+      sizeGB: 1
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DATABASE_URL
+        value: "file:/var/data/prod.db"
+      - key: FRONTEND_URL
+        sync: false # Provide your production Vercel frontend URL in the Render dashboard
+      - key: JWT_SECRET
+        generateValue: true
+      - key: JWT_EXPIRES_IN
+        value: 7d

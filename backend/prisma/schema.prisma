@@ -1,0 +1,61 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id           String    @id @default(uuid())
+  name         String
+  email        String    @unique
+  passwordHash String
+  role         String    @default("STUDENT") // Roles: STUDENT, ORGANIZER, ADMIN
+  createdAt    DateTime  @default(now())
+  events       Event[]   @relation("OrganizerEvents")
+  bookings     Booking[]
+  reviews      Review[]
+}
+
+model Event {
+  id             String    @id @default(uuid())
+  title          String
+  description    String
+  category       String
+  venue          String
+  startDateTime  DateTime
+  endDateTime    DateTime
+  capacity       Int
+  availableSeats Int
+  price          Float     @default(0.0)
+  status         String    @default("PUBLISHED") // Status: DRAFT, PUBLISHED, CANCELLED
+  organizerId    String
+  organizer      User      @relation("OrganizerEvents", fields: [organizerId], references: [id])
+  bookings       Booking[]
+  reviews        Review[]
+  createdAt      DateTime  @default(now())
+}
+
+model Booking {
+  id           String   @id @default(uuid())
+  eventId      String
+  event        Event    @relation(fields: [eventId], references: [id])
+  userId       String
+  user         User     @relation(fields: [userId], references: [id])
+  qrCodeString String   @unique
+  status       String   @default("CONFIRMED") // Status: CONFIRMED, CHECKED_IN, CANCELLED
+  createdAt    DateTime @default(now())
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  eventId   String
+  event     Event    @relation(fields: [eventId], references: [id])
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+  rating    Int
+  comment   String?
+  createdAt DateTime @default(now())
+}
