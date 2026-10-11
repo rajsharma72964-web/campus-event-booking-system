@@ -14,8 +14,12 @@ const configuredOrigins = rawFrontendUrls
   .map((origin) => origin.trim().replace(/\/$/, ''))
   .filter(Boolean);
 
-const defaultDevOrigins = ['http://localhost:3000', 'http://127.0.0.1:3000'];
-const allowedOrigins = Array.from(new Set([...defaultDevOrigins, ...configuredOrigins]));
+const defaultOrigins = [
+  'http://localhost:3000',
+  'http://127.0.0.1:3000',
+  'https://campus-event-booking-system.vercel.app'
+];
+const allowedOrigins = Array.from(new Set([...defaultOrigins, ...configuredOrigins]));
 
 const corsOptions = {
   origin: (origin, callback) => {
@@ -28,11 +32,9 @@ const corsOptions = {
     }
 
     const isExplicitlyAllowed = allowedOrigins.includes(origin);
-    const isVercelPreview =
-      allowedOrigins.some((url) => url.includes('vercel.app')) &&
-      origin.endsWith('.vercel.app');
+    const isVercelDomain = origin.endsWith('.vercel.app');
 
-    if (isExplicitlyAllowed || isVercelPreview) {
+    if (isExplicitlyAllowed || isVercelDomain) {
       return callback(null, true);
     }
 
@@ -84,10 +86,27 @@ app.use((err, req, res, next) => {
   });
 });
 
+const prisma = require('./utils/prisma');
+const { seedDatabase } = require('../prisma/seed');
+
+async function autoSeedIfEmpty() {
+  try {
+    const eventCount = await prisma.event.count();
+    if (eventCount === 0) {
+      console.log('Database has no events on boot. Auto-seeding initial data...');
+      await seedDatabase();
+      console.log('Database auto-seeded successfully.');
+    }
+  } catch (err) {
+    console.warn('Auto-seed check note:', err.message);
+  }
+}
+
 if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => {
+  app.listen(PORT, async () => {
     console.log(`Server running on port ${PORT}`);
     console.log(`Health check: http://localhost:${PORT}/api/health`);
+    await autoSeedIfEmpty();
   });
 }
 
