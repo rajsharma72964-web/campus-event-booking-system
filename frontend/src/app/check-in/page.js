@@ -243,22 +243,22 @@ export default function CheckInPage() {
         <div className="mb-6 animate-in fade-in duration-200">
           {result.type === 'success' ? (
             /* GREEN ALERT: Valid Check-In */
-            <div className="rounded-2xl border-2 border-emerald-500/50 bg-gradient-to-b from-emerald-950/80 to-slate-900 p-6 text-white shadow-2xl shadow-emerald-950/40">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
-                  <CheckCircle2 className="h-7 w-7" />
+            <div className="rounded-2xl border-2 border-emerald-500/50 bg-gradient-to-b from-emerald-950/80 to-slate-900 p-4 sm:p-6 text-white shadow-2xl shadow-emerald-950/40">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3.5 sm:gap-4">
+                <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  <CheckCircle2 className="h-6 w-6 sm:h-7 sm:w-7" />
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 w-full">
                   <span className="inline-block rounded-full bg-emerald-500/20 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-emerald-300 border border-emerald-500/30 mb-1">
                     ✓ Verified & Checked In
                   </span>
-                  <h3 className="text-lg font-extrabold text-white truncate">{result.attendeeName}</h3>
-                  <p className="text-xs text-emerald-200/90">{result.attendeeEmail}</p>
+                  <h3 className="text-base sm:text-lg font-extrabold text-white truncate">{result.attendeeName}</h3>
+                  <p className="text-xs text-emerald-200/90 truncate">{result.attendeeEmail}</p>
 
-                  <div className="mt-3 grid grid-cols-2 gap-2 border-t border-emerald-500/20 pt-3 text-xs">
+                  <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2 border-t border-emerald-500/20 pt-3 text-xs text-left">
                     <div>
                       <span className="text-emerald-300/70 text-[11px] block">Event</span>
-                      <span className="font-semibold text-white">{result.eventTitle}</span>
+                      <span className="font-semibold text-white break-words">{result.eventTitle}</span>
                     </div>
                     <div>
                       <span className="text-emerald-300/70 text-[11px] block">Time Verified</span>
@@ -268,7 +268,7 @@ export default function CheckInPage() {
 
                   <button
                     onClick={resetResult}
-                    className="mt-4 flex items-center gap-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 px-3 py-1.5 text-xs font-semibold text-emerald-200 hover:bg-emerald-500/30 transition"
+                    className="mt-4 w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-emerald-500/20 border border-emerald-500/40 px-3.5 py-2 text-xs font-semibold text-emerald-200 hover:bg-emerald-500/30 transition"
                   >
                     <RotateCcw className="h-3.5 w-3.5" />
                     <span>Scan Next Attendee</span>
@@ -278,20 +278,20 @@ export default function CheckInPage() {
             </div>
           ) : (
             /* RED ALERT: Duplicate, Cancelled, or Invalid */
-            <div className="rounded-2xl border-2 border-rose-500/60 bg-gradient-to-b from-rose-950/80 to-slate-900 p-6 text-white shadow-2xl shadow-rose-950/40">
-              <div className="flex items-start gap-4">
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30">
-                  <XCircle className="h-7 w-7" />
+            <div className="rounded-2xl border-2 border-rose-500/60 bg-gradient-to-b from-rose-950/80 to-slate-900 p-4 sm:p-6 text-white shadow-2xl shadow-rose-950/40">
+              <div className="flex flex-col sm:flex-row items-center sm:items-start text-center sm:text-left gap-3.5 sm:gap-4">
+                <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-rose-500/20 text-rose-400 border border-rose-500/30">
+                  <XCircle className="h-6 w-6 sm:h-7 sm:w-7" />
                 </div>
-                <div className="flex-1 min-w-0">
+                <div className="flex-1 min-w-0 w-full">
                   <span className="inline-block rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-rose-300 border border-rose-500/30 mb-1">
                     ✗ Entry Prohibited
                   </span>
-                  <h3 className="text-lg font-extrabold text-white">{result.title}</h3>
+                  <h3 className="text-base sm:text-lg font-extrabold text-white">{result.title}</h3>
                   <p className="text-xs text-rose-200/90 mt-1 leading-relaxed">{result.message}</p>
 
                   {result.details && (
-                    <div className="mt-3 rounded-lg bg-slate-950/60 p-3 border border-rose-500/20 text-xs text-slate-300 space-y-1">
+                    <div className="mt-3 rounded-lg bg-slate-950/60 p-3 border border-rose-500/20 text-xs text-slate-300 space-y-1 text-left">
                       <div>Attendee: <strong className="text-white">{result.details.attendeeName}</strong></div>
                       <div>Event: <strong className="text-white">{result.details.eventTitle}</strong></div>
                       <div>Status: <span className="text-amber-400 uppercase font-bold text-[10px]">{result.details.status}</span></div>
@@ -300,7 +300,7 @@ export default function CheckInPage() {
 
                   <button
                     onClick={resetResult}
-                    className="mt-4 flex items-center gap-1.5 rounded-lg bg-rose-500/20 border border-rose-500/40 px-3 py-1.5 text-xs font-semibold text-rose-200 hover:bg-rose-500/30 transition"
+                    className="mt-4 w-full sm:w-auto inline-flex items-center justify-center gap-1.5 rounded-lg bg-rose-500/20 border border-rose-500/40 px-3.5 py-2 text-xs font-semibold text-rose-200 hover:bg-rose-500/30 transition"
                   >
                     <RotateCcw className="h-3.5 w-3.5" />
                     <span>Try Again / Clear</span>
@@ -313,7 +313,7 @@ export default function CheckInPage() {
       )}
 
       {/* ── Main Scanner / Manual Input Box ── */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-6 backdrop-blur-md shadow-xl mb-8">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-4 sm:p-6 backdrop-blur-md shadow-xl mb-6 sm:mb-8">
         {mode === 'camera' ? (
           <div>
             <QRScanner
@@ -345,7 +345,7 @@ export default function CheckInPage() {
             <button
               type="submit"
               disabled={verifying || !manualCode.trim()}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3 text-xs font-bold text-white shadow-lg hover:bg-indigo-500 transition disabled:opacity-50"
+              className="w-full flex items-center justify-center gap-2 rounded-xl bg-indigo-600 py-3.5 text-xs font-bold text-white shadow-lg hover:bg-indigo-500 transition disabled:opacity-50"
             >
               {verifying ? (
                 <>
@@ -364,7 +364,7 @@ export default function CheckInPage() {
       </div>
 
       {/* ── Live Session Admissions Log ── */}
-      <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-6">
+      <div className="rounded-2xl border border-slate-800 bg-slate-900/40 p-4 sm:p-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
             <Ticket className="h-4 w-4 text-indigo-400" />
@@ -384,16 +384,16 @@ export default function CheckInPage() {
             {sessionHistory.map((item, idx) => (
               <div
                 key={idx}
-                className="flex items-center justify-between rounded-xl bg-slate-950/60 border border-slate-800 px-3.5 py-2.5 text-xs"
+                className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1 sm:gap-2 rounded-xl bg-slate-950/60 border border-slate-800 px-3.5 py-2.5 text-xs"
               >
                 <div className="flex items-center gap-2.5 min-w-0">
                   <div className="h-2 w-2 rounded-full bg-emerald-400 shrink-0" />
-                  <div className="truncate">
+                  <div className="truncate min-w-0">
                     <span className="font-semibold text-white">{item.attendeeName}</span>
                     <span className="text-slate-500 text-[11px] ml-2 truncate">({item.eventTitle})</span>
                   </div>
                 </div>
-                <span className="text-[11px] font-mono text-slate-400 shrink-0 ml-2">
+                <span className="text-[11px] font-mono text-slate-400 shrink-0 pl-4 sm:pl-0">
                   {item.verifiedAt}
                 </span>
               </div>

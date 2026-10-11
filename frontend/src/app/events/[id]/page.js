@@ -148,20 +148,20 @@ export default function EventDetailPage({ params }) {
   });
 
   return (
-    <div className="mx-auto max-w-5xl px-6 py-10">
+    <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6 sm:py-10">
       {/* Back button */}
       <Link
         href="/events"
-        className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white mb-6 transition-colors"
+        className="inline-flex items-center gap-2 text-xs font-semibold text-slate-400 hover:text-white mb-4 sm:mb-6 transition-colors"
       >
         <ArrowLeft className="h-4 w-4" />
         <span>Back to Events</span>
       </Link>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
         {/* Main Content (Left 2 cols) */}
         <div className="lg:col-span-2 space-y-6">
-          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-8 backdrop-blur-md shadow-xl">
+          <div className="rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-8 backdrop-blur-md shadow-xl">
             {/* Badges */}
             <div className="flex flex-wrap items-center justify-between gap-3 mb-4">
               <div className="flex items-center gap-2">
@@ -189,62 +189,62 @@ export default function EventDetailPage({ params }) {
             </div>
 
             {/* Event Title */}
-            <h1 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight leading-tight">
+            <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-white tracking-tight leading-tight break-words">
               {event.title}
             </h1>
 
             {/* Organizer Info */}
-            <div className="mt-4 flex items-center gap-3 border-b border-slate-800/80 pb-6 text-xs text-slate-400">
-              <div className="h-9 w-9 rounded-full bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400">
+            <div className="mt-4 flex items-center gap-3 border-b border-slate-800/80 pb-5 sm:pb-6 text-xs text-slate-400">
+              <div className="h-9 w-9 rounded-full bg-indigo-600/20 border border-indigo-500/30 flex items-center justify-center text-indigo-400 shrink-0">
                 <User className="h-4 w-4" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <div className="text-slate-400 text-[11px]">Hosted by</div>
-                <div className="font-semibold text-white">{event.organizer?.name || 'Campus Faculty'}</div>
+                <div className="font-semibold text-white truncate">{event.organizer?.name || 'Campus Faculty'}</div>
               </div>
             </div>
 
             {/* Description */}
-            <div className="mt-6">
-              <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 mb-2">
+            <div className="mt-5 sm:mt-6">
+              <h2 className="text-xs sm:text-sm font-bold uppercase tracking-wider text-slate-400 mb-2">
                 About This Event
               </h2>
-              <p className="text-sm text-slate-300 leading-relaxed whitespace-pre-line">
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed whitespace-pre-line">
                 {event.description}
               </p>
             </div>
 
             {/* Details Grid */}
-            <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-800/80 pt-6">
-              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-4 border border-slate-800/60">
+            <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 border-t border-slate-800/80 pt-5 sm:pt-6">
+              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-3.5 sm:p-4 border border-slate-800/60">
                 <Calendar className="h-5 w-5 text-indigo-400 mt-0.5 shrink-0" />
-                <div>
-                  <div className="text-xs text-slate-500 font-semibold uppercase">Date</div>
-                  <div className="text-sm font-semibold text-white">{startDate}</div>
+                <div className="min-w-0">
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase">Date</div>
+                  <div className="text-xs sm:text-sm font-semibold text-white truncate">{startDate}</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-4 border border-slate-800/60">
+              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-3.5 sm:p-4 border border-slate-800/60">
                 <Clock className="h-5 w-5 text-indigo-400 mt-0.5 shrink-0" />
-                <div>
-                  <div className="text-xs text-slate-500 font-semibold uppercase">Time</div>
-                  <div className="text-sm font-semibold text-white">{startTime} - {endTime}</div>
+                <div className="min-w-0">
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase">Time</div>
+                  <div className="text-xs sm:text-sm font-semibold text-white truncate">{startTime} - {endTime}</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-4 border border-slate-800/60">
+              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-3.5 sm:p-4 border border-slate-800/60">
                 <MapPin className="h-5 w-5 text-indigo-400 mt-0.5 shrink-0" />
-                <div>
-                  <div className="text-xs text-slate-500 font-semibold uppercase">Location</div>
-                  <div className="text-sm font-semibold text-white">{event.venue}</div>
+                <div className="min-w-0">
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase">Location</div>
+                  <div className="text-xs sm:text-sm font-semibold text-white truncate">{event.venue}</div>
                 </div>
               </div>
 
-              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-4 border border-slate-800/60">
+              <div className="flex items-start gap-3 rounded-xl bg-slate-950/40 p-3.5 sm:p-4 border border-slate-800/60">
                 <Building className="h-5 w-5 text-indigo-400 mt-0.5 shrink-0" />
-                <div>
-                  <div className="text-xs text-slate-500 font-semibold uppercase">Entry Policy</div>
-                  <div className="text-sm font-semibold text-white">Digital QR Ticket Required</div>
+                <div className="min-w-0">
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-semibold uppercase">Entry Policy</div>
+                  <div className="text-xs sm:text-sm font-semibold text-white">Digital QR Ticket Required</div>
                 </div>
               </div>
             </div>
@@ -253,12 +253,12 @@ export default function EventDetailPage({ params }) {
 
         {/* Right Sidebar: Ticket Reservation Box */}
         <div className="space-y-6">
-          <div className="sticky top-24 rounded-2xl border border-slate-800 bg-slate-900/80 p-6 backdrop-blur-xl shadow-2xl">
+          <div className="lg:sticky lg:top-24 rounded-2xl border border-slate-800 bg-slate-900/80 p-5 sm:p-6 backdrop-blur-xl shadow-2xl">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-400 mb-1">
               Ticket Price
             </div>
-            <div className="flex items-baseline gap-2 mb-6">
-              <span className="text-4xl font-extrabold text-white">
+            <div className="flex items-baseline gap-2 mb-5 sm:mb-6">
+              <span className="text-3xl sm:text-4xl font-extrabold text-white">
                 {event.price === 0 || !event.price ? 'Free' : `₹${parseFloat(event.price).toFixed(2)}`}
               </span>
               <span className="text-xs text-slate-500">/ attendee</span>

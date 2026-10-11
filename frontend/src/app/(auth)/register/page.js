@@ -44,14 +44,14 @@ export default function RegisterPage() {
   };
 
   return (
-    <div className="flex min-h-[calc(100vh-140px)] items-center justify-center px-4 py-12">
-      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900/70 p-8 shadow-2xl backdrop-blur-xl">
-        <div className="flex items-center gap-3 mb-6">
-          <div className="p-3 rounded-xl bg-indigo-600/20 text-indigo-400 ring-1 ring-indigo-500/30">
-            <UserPlus className="h-6 w-6" />
+    <div className="flex min-h-[calc(100vh-140px)] items-center justify-center px-4 py-8 sm:py-12">
+      <div className="w-full max-w-md rounded-2xl border border-slate-800 bg-slate-900/70 p-5 sm:p-8 shadow-2xl backdrop-blur-xl">
+        <div className="flex items-center gap-3 mb-5 sm:mb-6">
+          <div className="p-2.5 sm:p-3 rounded-xl bg-indigo-600/20 text-indigo-400 ring-1 ring-indigo-500/30 shrink-0">
+            <UserPlus className="h-5 sm:h-6 w-5 sm:w-6" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">Create an Account</h1>
+            <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Create an Account</h1>
             <p className="text-xs text-slate-400">Join the campus events community</p>
           </div>
         </div>

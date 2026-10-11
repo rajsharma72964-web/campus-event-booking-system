@@ -85,17 +85,17 @@ function QRModal({ booking, onClose }) {
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
-        <div className="bg-gradient-to-r from-indigo-600 to-violet-600 px-6 py-5 text-center">
-          <p className="text-xs font-bold uppercase tracking-widest text-indigo-200 mb-1">Campus Event Hub</p>
-          <h2 className="text-lg font-extrabold text-white">{event.title}</h2>
-          <p className="text-xs text-indigo-200 mt-1">{event.category}</p>
+        <div className="bg-gradient-to-r from-indigo-600 to-violet-600 px-4 sm:px-6 py-4 sm:py-5 text-center">
+          <p className="text-[11px] font-bold uppercase tracking-widest text-indigo-200 mb-0.5 sm:mb-1">Campus Event Hub</p>
+          <h2 className="text-base sm:text-lg font-extrabold text-white line-clamp-1">{event.title}</h2>
+          <p className="text-xs text-indigo-200 mt-0.5">{event.category}</p>
         </div>
 
         {/* QR Area */}
-        <div className="px-6 py-6 flex flex-col items-center">
-          <div className="rounded-xl border-4 border-indigo-500/40 bg-white p-3 mb-4 shadow-xl">
+        <div className="p-4 sm:p-6 flex flex-col items-center">
+          <div className="rounded-xl border-4 border-indigo-500/40 bg-white p-2.5 sm:p-3 mb-4 shadow-xl">
             {loadingQr ? (
-              <div className="w-[200px] h-[200px] flex items-center justify-center">
+              <div className="w-44 h-44 sm:w-48 sm:h-48 flex items-center justify-center">
                 <Loader2 className="h-8 w-8 animate-spin text-indigo-400" />
               </div>
             ) : (
@@ -103,25 +103,25 @@ function QRModal({ booking, onClose }) {
               <img
                 src={qrDataURL}
                 alt="Entry QR Code"
-                className="w-[200px] h-[200px] object-contain"
+                className="w-44 h-44 sm:w-48 sm:h-48 object-contain"
               />
             )}
           </div>
 
           {/* Event Details */}
-          <div className="w-full space-y-2 mb-5">
+          <div className="w-full space-y-2 mb-4 sm:mb-5">
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <Calendar className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
-              <span>{eventDate} at {eventTime}</span>
+              <span className="truncate">{eventDate} at {eventTime}</span>
             </div>
             <div className="flex items-center gap-2 text-xs text-slate-300">
               <MapPin className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
-              <span>{event.venue}</span>
+              <span className="truncate">{event.venue}</span>
             </div>
           </div>
 
           {/* QR String */}
-          <div className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 mb-5">
+          <div className="w-full rounded-lg border border-slate-700 bg-slate-950 px-3 py-2 mb-4 sm:mb-5">
             <p className="text-[10px] text-slate-500 font-mono text-center break-all leading-relaxed">
               {booking.qrCodeString}
             </p>
@@ -135,7 +135,7 @@ function QRModal({ booking, onClose }) {
         </div>
 
         {/* Footer */}
-        <div className="border-t border-slate-800 px-6 py-4 flex gap-3">
+        <div className="border-t border-slate-800 px-4 sm:px-6 py-3.5 sm:py-4 flex gap-3">
           <button
             onClick={onClose}
             className="flex-1 rounded-xl border border-slate-700 bg-slate-800 py-2.5 text-xs font-semibold text-white hover:bg-slate-700 transition"
@@ -376,30 +376,30 @@ export default function StudentDashboardPage() {
         <QRModal booking={selectedBooking} onClose={() => setSelectedBooking(null)} />
       )}
 
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-10">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 py-6 sm:py-10">
         {/* ── Page Header ── */}
-        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-6 mb-8">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-800 pb-5 sm:pb-6 mb-6 sm:mb-8">
           <div>
             <div className="flex items-center gap-2 mb-1">
               <LayoutDashboard className="h-5 w-5 text-indigo-400" />
-              <h1 className="text-2xl font-extrabold text-white">My Tickets</h1>
+              <h1 className="text-xl sm:text-2xl font-extrabold text-white">My Tickets</h1>
             </div>
-            <p className="text-sm text-slate-400">
+            <p className="text-xs sm:text-sm text-slate-400">
               Welcome back, <span className="font-semibold text-indigo-300">{user?.name || 'Student'}</span>! Manage your event tickets and QR passes.
             </p>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2 sm:gap-3 w-full sm:w-auto">
             <button
               onClick={fetchBookings}
               disabled={loading}
-              className="flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-700 transition disabled:opacity-50"
+              className="flex-1 sm:flex-initial justify-center flex items-center gap-2 rounded-xl border border-slate-700 bg-slate-800 px-3.5 sm:px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-700 transition disabled:opacity-50"
             >
               <RefreshCw className={`h-3.5 w-3.5 ${loading ? 'animate-spin' : ''}`} />
               <span>Refresh</span>
             </button>
             <Link
               href="/events"
-              className="flex items-center gap-2 rounded-xl bg-indigo-600 px-4 py-2 text-xs font-semibold text-white hover:bg-indigo-500 transition"
+              className="flex-1 sm:flex-initial justify-center flex items-center gap-2 rounded-xl bg-indigo-600 px-3.5 sm:px-4 py-2 text-xs font-semibold text-white hover:bg-indigo-500 transition"
             >
               <Ticket className="h-3.5 w-3.5" />
               <span>Browse Events</span>
@@ -408,7 +408,7 @@ export default function StudentDashboardPage() {
         </div>
 
         {/* ── Stats Cards ── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-8">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 mb-6 sm:mb-8">
           {[
             {
               label: 'Total Bookings',
@@ -439,10 +439,10 @@ export default function StudentDashboardPage() {
               bg: 'bg-amber-500/10 border-amber-500/20',
             },
           ].map(({ label, value, icon: Icon, color, bg }) => (
-            <div key={label} className={`rounded-xl border p-4 ${bg}`}>
-              <Icon className={`h-5 w-5 mb-2 ${color}`} />
-              <p className="text-[11px] text-slate-400 font-semibold uppercase tracking-wide">{label}</p>
-              <p className="text-2xl font-extrabold text-white mt-0.5">{value}</p>
+            <div key={label} className={`rounded-xl border p-3.5 sm:p-4 ${bg}`}>
+              <Icon className={`h-4 sm:h-5 w-4 sm:w-5 mb-1.5 sm:mb-2 ${color}`} />
+              <p className="text-[10px] sm:text-[11px] text-slate-400 font-semibold uppercase tracking-wide">{label}</p>
+              <p className="text-xl sm:text-2xl font-extrabold text-white mt-0.5">{value}</p>
             </div>
           ))}
         </div>
@@ -456,7 +456,7 @@ export default function StudentDashboardPage() {
         )}
 
         {/* ── Tab Navigation ── */}
-        <div className="flex items-center gap-1 rounded-xl bg-slate-900 border border-slate-800 p-1 mb-6 w-fit">
+        <div className="flex items-center gap-1.5 rounded-xl bg-slate-900 border border-slate-800 p-1.5 mb-6 w-full sm:w-fit overflow-x-auto no-scrollbar">
           {[
             { id: 'active', label: 'Active', count: bookings.filter((b) => b.status === 'CONFIRMED' && new Date(b.event.startDateTime) >= now).length },
             { id: 'past', label: 'Past', count: bookings.filter((b) => b.status === 'CHECKED_IN' || (b.status === 'CONFIRMED' && new Date(b.event.startDateTime) < now)).length },
@@ -465,13 +465,13 @@ export default function StudentDashboardPage() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`flex items-center gap-2 rounded-lg px-4 py-2 text-xs font-semibold transition ${
+              className={`flex-1 sm:flex-initial justify-center flex items-center gap-2 rounded-lg px-3 sm:px-4 py-2 text-xs font-semibold whitespace-nowrap transition ${
                 activeTab === tab.id
                   ? 'bg-indigo-600 text-white shadow'
                   : 'text-slate-400 hover:text-white hover:bg-slate-800'
               }`}
             >
-              {tab.label}
+              <span>{tab.label}</span>
               {tab.count > 0 && (
                 <span
                   className={`rounded-full px-1.5 py-0.5 text-[10px] font-bold ${

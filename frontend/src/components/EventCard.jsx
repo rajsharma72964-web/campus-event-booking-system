@@ -29,14 +29,14 @@ export default function EventCard({ event }) {
     : 'Date TBA';
 
   return (
-    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-6 transition-all duration-300 hover:border-indigo-500/50 hover:bg-slate-900/80 hover:shadow-xl hover:shadow-indigo-500/5">
-      <div>
+    <div className="group relative flex flex-col justify-between overflow-hidden rounded-2xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 transition-all duration-300 hover:border-indigo-500/50 hover:bg-slate-900/80 hover:shadow-xl hover:shadow-indigo-500/5">
+      <div className="min-w-0">
         {/* Badges */}
         <div className="flex items-center justify-between gap-2 mb-3">
-          <span className={`rounded-full border px-2.5 py-0.5 text-xs font-semibold uppercase tracking-wider ${categoryStyle}`}>
+          <span className={`rounded-full border px-2.5 py-0.5 text-[11px] sm:text-xs font-semibold uppercase tracking-wider ${categoryStyle}`}>
             {event.category || 'General'}
           </span>
-          <span className="text-sm font-bold text-white">
+          <span className="text-xs sm:text-sm font-bold text-white shrink-0">
             {event.price === 0 || !event.price ? (
               <span className="text-emerald-400">Free</span>
             ) : (
@@ -46,7 +46,7 @@ export default function EventCard({ event }) {
         </div>
 
         {/* Title */}
-        <h3 className="text-lg font-bold text-white transition-colors group-hover:text-indigo-300 line-clamp-1">
+        <h3 className="text-base sm:text-lg font-bold text-white transition-colors group-hover:text-indigo-300 line-clamp-1 break-words">
           {event.title}
         </h3>
 
@@ -57,34 +57,34 @@ export default function EventCard({ event }) {
       </div>
 
       {/* Meta details footer */}
-      <div className="mt-6 space-y-2.5 border-t border-slate-800/80 pt-4 text-xs text-slate-400">
-        <div className="flex items-center gap-2">
+      <div className="mt-5 sm:mt-6 space-y-2.5 border-t border-slate-800/80 pt-4 text-xs text-slate-400">
+        <div className="flex items-center gap-2 min-w-0">
           <Calendar className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
           <span className="truncate">{formattedDate}</span>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 min-w-0">
           <MapPin className="h-3.5 w-3.5 text-indigo-400 shrink-0" />
           <span className="truncate">{event.venue || 'Campus Venue'}</span>
         </div>
 
-        <div className="flex items-center justify-between pt-2 border-t border-slate-800/40">
-          <div className="flex items-center gap-1.5">
-            <Users className="h-3.5 w-3.5 text-slate-500" />
+        <div className="flex items-center justify-between pt-2 border-t border-slate-800/40 gap-2">
+          <div className="flex items-center gap-1.5 min-w-0">
+            <Users className="h-3.5 w-3.5 text-slate-500 shrink-0" />
             {isSoldOut ? (
-              <span className="font-semibold text-rose-400">Sold Out</span>
+              <span className="font-semibold text-rose-400 text-[11px] sm:text-xs">Sold Out</span>
             ) : isLowAvailability ? (
-              <span className="font-semibold text-amber-400">
+              <span className="font-semibold text-amber-400 text-[11px] sm:text-xs truncate">
                 Only {event.availableSeats} left!
               </span>
             ) : (
-              <span>{event.availableSeats} seats available</span>
+              <span className="text-[11px] sm:text-xs truncate">{event.availableSeats} seats available</span>
             )}
           </div>
 
           <Link
             href={`/events/${event.id}`}
-            className="flex items-center gap-1 font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+            className="flex items-center gap-1 font-semibold text-indigo-400 hover:text-indigo-300 transition-colors shrink-0 py-1 pl-2 text-xs sm:text-sm"
           >
             <span>Details</span>
             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />

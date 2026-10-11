@@ -92,9 +92,9 @@ export default function QRScanner({ onScan, isPaused = false }) {
   return (
     <div className="w-full flex flex-col items-center">
       {/* Scanner Box */}
-      <div className="relative w-full max-w-sm rounded-2xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl">
+      <div className="relative w-full max-w-[340px] sm:max-w-sm rounded-2xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl">
         {/* Viewfinder Target Container */}
-        <div id={scannerContainerId} className="w-full min-h-[300px] overflow-hidden" />
+        <div id={scannerContainerId} className="w-full min-h-[260px] sm:min-h-[300px] overflow-hidden" />
 
         {/* Overlay when paused */}
         {isPaused && scannerActive && (
@@ -107,7 +107,7 @@ export default function QRScanner({ onScan, isPaused = false }) {
 
         {/* Error / Fallback State */}
         {cameraError && (
-          <div className="p-6 text-center">
+          <div className="p-5 sm:p-6 text-center">
             <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-rose-500/10 text-rose-400 border border-rose-500/20">
               <CameraOff className="h-6 w-6" />
             </div>
@@ -117,7 +117,7 @@ export default function QRScanner({ onScan, isPaused = false }) {
             </p>
             <button
               onClick={startScanner}
-              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-slate-800 px-4 py-2 text-xs font-semibold text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700"
+              className="mt-4 inline-flex items-center gap-2 rounded-xl bg-slate-800 px-4 py-2.5 text-xs font-semibold text-slate-300 hover:bg-slate-700 hover:text-white transition border border-slate-700"
             >
               <RefreshCw className="h-3.5 w-3.5" />
               <span>Retry Camera</span>
@@ -126,22 +126,22 @@ export default function QRScanner({ onScan, isPaused = false }) {
         )}
 
         {/* Scanner Active Controls Bar */}
-        <div className="border-t border-slate-800/80 bg-slate-900/90 px-4 py-3 flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2">
+        <div className="border-t border-slate-800/80 bg-slate-900/90 px-3.5 sm:px-4 py-2.5 sm:py-3 flex items-center justify-between text-xs">
+          <div className="flex items-center gap-2 min-w-0">
             <span
-              className={`h-2 w-2 rounded-full ${
+              className={`h-2 w-2 rounded-full shrink-0 ${
                 scannerActive ? 'bg-emerald-400 animate-pulse' : 'bg-slate-500'
               }`}
             />
-            <span className="text-slate-400 font-medium">
-              {scannerActive ? 'Camera Active (Scanning)' : 'Camera Idle'}
+            <span className="text-slate-400 font-medium truncate text-[11px] sm:text-xs">
+              {scannerActive ? 'Camera Active' : 'Camera Idle'}
             </span>
           </div>
 
           {scannerActive ? (
             <button
               onClick={stopScanner}
-              className="flex items-center gap-1.5 rounded-lg px-2.5 py-1 text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition"
+              className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800 transition"
             >
               <CameraOff className="h-3.5 w-3.5" />
               <span>Turn Off</span>
@@ -149,7 +149,7 @@ export default function QRScanner({ onScan, isPaused = false }) {
           ) : (
             <button
               onClick={startScanner}
-              className="flex items-center gap-1.5 rounded-lg bg-indigo-600/20 border border-indigo-500/30 px-2.5 py-1 text-xs font-semibold text-indigo-300 hover:bg-indigo-600/30 transition"
+              className="flex items-center gap-1.5 rounded-lg bg-indigo-600/20 border border-indigo-500/30 px-3 py-1.5 text-xs font-semibold text-indigo-300 hover:bg-indigo-600/30 transition"
             >
               <Camera className="h-3.5 w-3.5" />
               <span>Start Camera</span>
@@ -158,7 +158,7 @@ export default function QRScanner({ onScan, isPaused = false }) {
         </div>
       </div>
 
-      <p className="mt-3 text-center text-[11px] text-slate-400">
+      <p className="mt-3 text-center text-[11px] text-slate-400 max-w-xs px-2">
         Align the attendee&apos;s digital or printed QR code ticket inside the scanner frame.
       </p>
     </div>
