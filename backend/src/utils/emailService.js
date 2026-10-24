@@ -55,7 +55,7 @@ const buildTicketEmailHtml = ({ booking, event, user, qrCodeDataURL }) => {
           <!-- Header -->
           <tr>
             <td style="background:linear-gradient(135deg,#4F46E5 0%,#7C3AED 100%);padding:32px;text-align:center;">
-              <p style="margin:0 0 8px;color:#C7D2FE;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">Campus Event Hub</p>
+              <p style="margin:0 0 8px;color:#C7D2FE;font-size:12px;font-weight:600;letter-spacing:2px;text-transform:uppercase;">EventHive</p>
               <h1 style="margin:0;color:#FFFFFF;font-size:26px;font-weight:800;">🎟 Booking Confirmed!</h1>
               <p style="margin:8px 0 0;color:#E0E7FF;font-size:14px;">Your ticket is ready. See you at the event!</p>
             </td>
@@ -120,7 +120,7 @@ const buildTicketEmailHtml = ({ booking, event, user, qrCodeDataURL }) => {
           <tr>
             <td style="background:#0F172A;padding:20px;text-align:center;border-top:1px solid #1E293B;">
               <p style="color:#475569;font-size:11px;margin:0;">
-                Campus Event Hub · Automated Confirmation · Do not reply to this email.
+                EventHive · Automated Confirmation · Do not reply to this email.
               </p>
             </td>
           </tr>
@@ -164,7 +164,7 @@ const sendBookingConfirmationEmail = async ({ booking, event, user, qrCodeDataUR
 
   try {
     const info = await transporter.sendMail({
-      from: process.env.EMAIL_FROM || '"Campus Event Hub" <noreply@campuseventhub.edu>',
+      from: process.env.EMAIL_FROM || '"EventHive" <noreply@eventhive.campus>',
       to: user.email,
       subject,
       html,
@@ -174,7 +174,7 @@ const sendBookingConfirmationEmail = async ({ booking, event, user, qrCodeDataUR
           filename: 'qr-ticket.png',
           content: qrCodeDataURL.split(',')[1], // strip "data:image/png;base64,"
           encoding: 'base64',
-          cid: 'qrticket@campuseventhub',
+          cid: 'qrticket@eventhive',
         },
       ],
     });

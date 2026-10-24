@@ -52,7 +52,7 @@ export default function RegisterPage() {
           </div>
           <div>
             <h1 className="text-xl sm:text-2xl font-bold text-white tracking-tight">Create an Account</h1>
-            <p className="text-xs text-slate-400">Join the campus events community</p>
+            <p className="text-xs text-slate-400">Join the EventHive community</p>
           </div>
         </div>
 

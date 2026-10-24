@@ -1,4 +1,4 @@
-# 🎓 Campus Event & Booking System
+# 🎓 EventHive — Campus Event & Booking System
 
 [![Next.js](https://img.shields.io/badge/Frontend-Next.js%2016-black?style=flat&logo=next.js)](https://nextjs.org/)
 [![Express.js](https://img.shields.io/badge/Backend-Express%204-lightgrey?style=flat&logo=express)](https://expressjs.com/)
@@ -109,7 +109,7 @@ flowchart TD
 ## 📂 Directory Layout
 
 ```text
-campus-event-booking-system/
+eventhive/
 ├── backend/
 │   ├── prisma/
 │   │   ├── migrations/          # Version-controlled database migrations
@@ -152,6 +152,7 @@ campus-event-booking-system/
 │   │   │   └── page.js                 # Landing page & hero showcase
 │   │   ├── components/
 │   │   │   ├── EventCard.jsx
+│   │   │   ├── Footer.jsx              # EventHive footer component
 │   │   │   ├── Navbar.jsx
 │   │   │   └── QRScanner.jsx           # html5-qrcode camera component
 │   │   ├── context/
@@ -176,8 +177,8 @@ campus-event-booking-system/
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-username>/campus-event-booking-system.git
-cd campus-event-booking-system
+git clone https://github.com/<your-username>/eventhive.git
+cd eventhive
 
 # Install backend dependencies
 cd backend
@@ -205,7 +206,7 @@ SMTP_HOST="sandbox.smtp.mailtrap.io"
 SMTP_PORT=2525
 SMTP_USER=""
 SMTP_PASS=""
-EMAIL_FROM="Campus Event Hub <noreply@campuseventhub.edu>"
+EMAIL_FROM="EventHive <noreply@eventhive.campus>"
 ```
 
 #### Frontend (`frontend/.env.local`):
@@ -339,8 +340,8 @@ All backend routes are prefixed with `/api`. Protected routes require a valid `A
 | **Backend** | `PORT` | Web server listening port | `10000` or `5000` |
 | **Backend** | `DATABASE_URL` | SQLite file storage path | `file:/var/data/prod.db` |
 | **Backend** | `JWT_SECRET` | Secret key for signing tokens | `a5f8e3...` |
-| **Backend** | `FRONTEND_URL` | Permitted CORS origin(s) | `https://campus-events.vercel.app` |
-| **Frontend**| `NEXT_PUBLIC_API_BASE_URL` | Backend API base address | `https://campus-events.onrender.com/api` |
+| **Backend** | `FRONTEND_URL` | Permitted CORS origin(s) | `https://eventhive.vercel.app` |
+| **Frontend**| `NEXT_PUBLIC_API_BASE_URL` | Backend API base address | `https://eventhive.onrender.com/api` |
 
 ---
 

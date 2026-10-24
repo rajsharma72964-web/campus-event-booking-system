@@ -1,4 +1,4 @@
-# Implementation Plan - Campus Event & Booking System
+# Implementation Plan - EventHive — Campus Event & Booking System
 
 An end-to-end event discovery, ticket reservation, and administrative management platform designed for college campuses.
 

@@ -17,6 +17,7 @@ const configuredOrigins = rawFrontendUrls
 const defaultOrigins = [
   'http://localhost:3000',
   'http://127.0.0.1:3000',
+  'https://eventhive.vercel.app',
   'https://campus-event-booking-system.vercel.app'
 ];
 const allowedOrigins = Array.from(new Set([...defaultOrigins, ...configuredOrigins]));
@@ -55,7 +56,7 @@ app.get('/api/health', (req, res) => {
   res.status(200).json({
     status: 'ok',
     timestamp: new Date().toISOString(),
-    service: 'Campus Event & Booking System API'
+    service: 'EventHive — Campus Event & Booking System API'
   });
 });
 

@@ -86,7 +86,7 @@ function QRModal({ booking, onClose }) {
       >
         {/* Header */}
         <div className="bg-gradient-to-r from-indigo-600 to-violet-600 px-4 sm:px-6 py-4 sm:py-5 text-center">
-          <p className="text-[11px] font-bold uppercase tracking-widest text-indigo-200 mb-0.5 sm:mb-1">Campus Event Hub</p>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-indigo-200 mb-0.5 sm:mb-1">EventHive Pass</p>
           <h2 className="text-base sm:text-lg font-extrabold text-white line-clamp-1">{event.title}</h2>
           <p className="text-xs text-indigo-200 mt-0.5">{event.category}</p>
         </div>

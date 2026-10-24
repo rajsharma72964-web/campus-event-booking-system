@@ -1,7 +1,7 @@
 {
-  "name": "campus-event-backend",
+  "name": "eventhive-backend",
   "version": "1.0.0",
-  "description": "Backend API for Campus Event & Booking System",
+  "description": "Backend API for EventHive — Campus Event & Booking System",
   "main": "src/server.js",
   "scripts": {
     "start": "node src/server.js",

@@ -40,7 +40,7 @@ export default function Navbar() {
         >
           <Calendar className="h-5 w-5 sm:h-6 sm:w-6 text-indigo-400 shrink-0" />
           <span>
-            Campus<span className="text-indigo-400">Events</span>
+            Event<span className="text-indigo-400">Hive</span>
           </span>
         </Link>
 

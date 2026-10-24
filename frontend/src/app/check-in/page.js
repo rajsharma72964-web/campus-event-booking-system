@@ -333,7 +333,7 @@ export default function CheckInPage() {
                 type="text"
                 value={manualCode}
                 onChange={(e) => setManualCode(e.target.value)}
-                placeholder="e.g. CEH-tmp-... or attendee@campus.edu"
+                placeholder="e.g. EVH-... or attendee@campus.edu"
                 className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white placeholder-slate-600 focus:border-indigo-500 focus:outline-hidden focus:ring-1 focus:ring-indigo-500 font-mono transition"
                 autoFocus
               />

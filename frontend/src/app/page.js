@@ -14,18 +14,18 @@ export default function HomePage() {
         <div className="mx-auto max-w-3xl text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-indigo-500/20 bg-indigo-500/10 px-3.5 py-1 text-[11px] sm:text-xs font-semibold text-indigo-400 mb-6">
             <Sparkles className="h-3.5 w-3.5 shrink-0" />
-            <span>Campus Event & Booking System &bull; Live Online</span>
+            <span>EventHive • Campus Event & Booking Platform</span>
           </div>
 
           <h1 className="text-3xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl bg-clip-text leading-tight sm:leading-tight">
-            Discover Campus Life. <br />
+            Discover Campus Life with <br />
             <span className="bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400 bg-clip-text text-transparent">
-              Reserve Tickets Seamlessly.
+              EventHive
             </span>
           </h1>
 
           <p className="mt-4 sm:mt-6 text-base sm:text-lg leading-relaxed text-slate-300 max-w-2xl mx-auto px-2">
-            Your all-in-one college platform for event discovery, instant seat reservations with unique QR code tickets, and streamlined organizer check-ins.
+            Welcome to EventHive — the premier university platform for event discovery, instant QR code seat reservations, and seamless real-time gate check-ins.
           </p>
 
           <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-3 sm:gap-4 max-w-md sm:max-w-none mx-auto">
@@ -90,7 +90,7 @@ export default function HomePage() {
         <div className="mt-16 sm:mt-20 max-w-3xl mx-auto rounded-2xl border border-slate-800/80 bg-slate-900/40 p-5 sm:p-6 backdrop-blur">
           <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-slate-400 mb-3">
             <CheckCircle2 className="h-4 w-4 text-emerald-400" />
-            <span>Campus Event Hub Core Features</span>
+            <span>EventHive Platform Architecture</span>
           </div>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-center">
             <div className="rounded-xl bg-slate-950/60 p-3 border border-slate-800/60">

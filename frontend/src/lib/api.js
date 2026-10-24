@@ -8,27 +8,54 @@ const getBaseUrl = () => {
 
 const API_BASE_URL = getBaseUrl();
 
+// Helper to retrieve token from localStorage or cookie with validation
+export const getStoredToken = () => {
+  if (typeof window === 'undefined') return null;
+  try {
+    let token = localStorage.getItem('token');
+    if (!token && typeof document !== 'undefined') {
+      const match = document.cookie.match(/(^|;)\s*token\s*=\s*([^;]+)/);
+      if (match) token = decodeURIComponent(match[2]);
+    }
+    if (token && token !== 'undefined' && token !== 'null' && token.trim() !== '') {
+      return token.trim();
+    }
+  } catch (err) {
+    console.error('Error reading stored token:', err);
+  }
+  return null;
+};
+
 export async function fetchApi(endpoint, options = {}) {
   const cleanEndpoint = endpoint.startsWith('/') ? endpoint : `/${endpoint}`;
   const url = `${API_BASE_URL}${cleanEndpoint}`;
 
   const headers = {
     'Content-Type': 'application/json',
-    ...options.headers,
+    ...(options.headers || {}),
   };
 
-  // Automatically attach Bearer token from localStorage in client-side environment
-  if (typeof window !== 'undefined') {
-    const token = localStorage.getItem('token');
-    if (token && !headers['Authorization']) {
-      headers['Authorization'] = `Bearer ${token}`;
-    }
+  // Automatically attach Bearer token if not explicitly provided
+  const token = getStoredToken();
+  if (token && !headers['Authorization'] && !headers['authorization']) {
+    headers['Authorization'] = `Bearer ${token}`;
   }
 
   const response = await fetch(url, {
     ...options,
     headers,
   });
+
+  // Global 401 handler: dispatch custom event if token is rejected on authenticated routes
+  if (
+    response.status === 401 &&
+    !cleanEndpoint.includes('/auth/login') &&
+    !cleanEndpoint.includes('/auth/register')
+  ) {
+    if (typeof window !== 'undefined') {
+      window.dispatchEvent(new CustomEvent('auth:session-expired'));
+    }
+  }
 
   const data = await response.json().catch(() => null);
 

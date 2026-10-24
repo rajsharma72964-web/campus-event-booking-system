@@ -4,12 +4,12 @@ const crypto = require('crypto');
 
 /**
  * Generates a unique, cryptographically random QR payload string.
- * Format: CEH-<bookingId>-<timestamp>-<random8chars>
+ * Format: EVH-<bookingId>-<timestamp>-<random8chars>
  */
 const generateQRPayload = (bookingId) => {
   const timestamp = Date.now().toString(36).toUpperCase();
   const random = crypto.randomBytes(4).toString('hex').toUpperCase();
-  return `CEH-${bookingId}-${timestamp}-${random}`;
+  return `EVH-${bookingId}-${timestamp}-${random}`;
 };
 
 /**

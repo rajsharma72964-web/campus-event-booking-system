@@ -3,7 +3,7 @@
 
 services:
   - type: web
-    name: campus-event-backend
+    name: eventhive-backend
     runtime: node
     plan: starter # Render Persistent Disks require Starter plan ($7/mo). For free tier, remove the disk section.
     region: oregon
